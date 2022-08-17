@@ -69,6 +69,24 @@
             android:layout_below="@id/geek_item_articulo_doi"
             android:textSize="15sp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Link: "
+            android:textColor="@color/black"
+            android:id="@+id/geek_item_articulo_link"
+            android:textStyle="bold"
+            android:layout_below="@id/geek_item_articulo_date_published"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/geek_item_articulo_BtnDescarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PDF"
+            android:layout_below="@id/geek_item_articulo_link"
+            />
+
     </RelativeLayout>
 
 

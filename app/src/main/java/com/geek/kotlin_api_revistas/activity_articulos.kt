@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -47,9 +48,12 @@ class activity_articulos : AppCompatActivity() {
                 var list_articulo_title = arrayListOf<String>()
                 var list_articulo_doi = arrayListOf<String>()
                 var list_articulo_date_published = arrayListOf<String>()
+                var list_articulo_dUrlViewGalley = arrayListOf<String>()
+
 
                 //Extraemos Elementos de eiquetas
                 //var elemento: JSONObject =str.getJSONObject(index)
+
                 while (index<n)
                 {
                     var elemento: JSONObject =str.getJSONObject(index)
@@ -59,9 +63,13 @@ class activity_articulos : AppCompatActivity() {
                     list_articulo_title.add(elemento.getString("title"))
                     list_articulo_doi.add(elemento.getString("doi"))
                     list_articulo_date_published.add(elemento.getString("date_published"))
+                    var str2: JSONArray = JSONArray(elemento.getString("galeys"))
+                    var elemento2: JSONObject =str2.getJSONObject(0)
+                    list_articulo_dUrlViewGalley.add(elemento2.getString("UrlViewGalley"))
+                    //MensajeLargo(elemento2.getString("UrlViewGalley"))
                     index++
                 }
-                VisualizaCardview_(list_articulo_id,list_articulo_section,list_articulo_title,list_articulo_doi,list_articulo_date_published)
+                VisualizaCardview_(list_articulo_id,list_articulo_section,list_articulo_title,list_articulo_doi,list_articulo_date_published,list_articulo_dUrlViewGalley)
 
             },
             { Log.d("API", "that didn't work") })
@@ -75,12 +83,19 @@ class activity_articulos : AppCompatActivity() {
                                    list2: List<String>,
                                    list3: List<String>,
                                    list4: List<String>,
-                                   list5: List<String>)
+                                   list5: List<String>,
+                                   list6: List<String>)
     {
         val recyclerView_ : RecyclerView =findViewById(R.id.recycler_articulos)
-        val adapter_=CustomerAdapter_Articulos(this, list1,list2,list3,list4,list5)
+        val adapter_=CustomerAdapter_Articulos(this,this, list1,list2,list3,list4,list5,list6)
 
         recyclerView_.layoutManager= LinearLayoutManager(this)
         recyclerView_.adapter=adapter_
+    }
+
+    fun MensajeLargo(Mensaje: String)
+    {
+        Toast.makeText(this, Mensaje.toString(), Toast.LENGTH_LONG).show()
+
     }
 }
