@@ -1,10 +1,13 @@
 package com.geek.kotlin_api_revistas
 
+import android.app.DownloadManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -87,10 +90,14 @@ class activity_articulos : AppCompatActivity() {
                                    list6: List<String>)
     {
         val recyclerView_ : RecyclerView =findViewById(R.id.recycler_articulos)
-        val adapter_=CustomerAdapter_Articulos(this,this, list1,list2,list3,list4,list5,list6)
+        val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+
+
+        val adapter_=CustomerAdapter_Articulos(this,this, list1,list2,list3,list4,list5,list6,manager)
 
         recyclerView_.layoutManager= LinearLayoutManager(this)
         recyclerView_.adapter=adapter_
+
     }
 
     fun MensajeLargo(Mensaje: String)
