@@ -83,9 +83,17 @@
             android:id="@+id/geek_item_articulo_BtnDescarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PDF"
             android:layout_below="@id/geek_item_articulo_link"
-            />
+            android:text="PDF"
+            android:src="@drawable/icono_download"/>
+
+        <Button
+            android:id="@+id/geek_item_articulo_BtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/geek_item_articulo_BtnDescarga"
+            android:text="View"
+            android:src="@drawable/icono_download"/>
 
     </RelativeLayout>
 

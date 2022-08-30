@@ -26,13 +26,8 @@ import com.squareup.picasso.Picasso
 
 class CustomerAdapter_Articulos constructor(activity_: Activity,
                                             context_: Context,
-                                            did: List<String>,
-                                            dsection: List<String>,
-                                            dtitle: List<String>,
-                                            ddoi: List<String>,
-                                            ddate_published: List<String>,
-                                            dUrlViewGalley : List<String>,
-                                            dmanager: DownloadManager) : RecyclerView.Adapter<CustomerAdapter_Articulos.ViewHolder>() {
+                                            dmanager: DownloadManager,
+                                            var userList: ArrayList<Cs_Articulo>) : RecyclerView.Adapter<CustomerAdapter_Articulos.ViewHolder>() {
 
 
     val context: Context = context_
@@ -40,14 +35,6 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
     val REQUESTED_PERMISSION_CODE=100
     val manager: DownloadManager=dmanager
     var downloadid: Long = 0
-
-    //Creamos los list con valores por defectos para luego cambiarlos con los datos de la Api
-    val datos_id = did
-    val datos_section=dsection
-    val datos_title=dtitle
-    val datos_doi = ddoi
-    val datos_published=ddate_published
-    val datos_UrlViewGalley= dUrlViewGalley
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): CustomerAdapter_Articulos.ViewHolder {
@@ -59,16 +46,16 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
 
     override fun onBindViewHolder(viewHolder: CustomerAdapter_Articulos.ViewHolder, i: Int) {
 
-        viewHolder.itemid.text = datos_id.get(i)
-        viewHolder.itemsection.text=datos_section.get(i)
-        viewHolder.itemtitle.text=datos_title.get(i)
-        viewHolder.itemdoi.text=datos_doi.get(i)
-        viewHolder.itempublished.text=datos_published.get(i)
-        viewHolder.itemdUrlViewGalley.text=datos_UrlViewGalley.get(i)
+        viewHolder.itemid.text = userList[i].id
+        viewHolder.itemsection.text=userList[i].section
+        viewHolder.itemtitle.text=userList[i].linkPD
+        viewHolder.itemdoi.text=userList[i].doi
+        viewHolder.itempublished.text=userList[i].publicacion
+        viewHolder.itemdUrlViewGalley.text=userList[i].link
     }
 
     override fun getItemCount(): Int {
-        return datos_id.count()
+        return userList.count()
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
@@ -79,7 +66,10 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
         var itemdoi: TextView
         var itempublished: TextView
         var btndescarga: Button
+        var btnview: Button
+
         var itemdUrlViewGalley: TextView
+
 
         init {
             itemid=itemView.findViewById(R.id.geek_item_articulo_id)
@@ -89,25 +79,28 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
             itempublished=itemView.findViewById(R.id.geek_item_articulo_date_published)
             itemdUrlViewGalley=itemView.findViewById(R.id.geek_item_articulo_link)
             btndescarga=itemView.findViewById(R.id.geek_item_articulo_BtnDescarga)
-
+            btnview=itemView.findViewById(R.id.geek_item_articulo_BtnView)
             //Enviar Datos
 
             btndescarga.setOnClickListener{ v: View ->
 
-                //    Snackbar.make(v,"Descargas el Archivo",Snackbar.LENGTH_LONG).setAction("Accion",null).show()
-                //               Snackbar.make(v, "Item Selecccionado $position    ${itemid.text}" ,  Snackbar.LENGTH_LONG).setAction("Actción", null).show()
-               // solicittarPermiso()
-               // MensajeLargo(itemdUrlViewGalley.text.toString())
-                BajarDoc(itemdUrlViewGalley.text.toString())
+                BajarDoc(itemtitle.text.toString())
             }
+            btnview.setOnClickListener{ v: View ->
+                var i= Intent(context,activity_webview::class.java)
+                i.putExtra("link", itemdUrlViewGalley.text)
+                ContextCompat.startActivity(context, i, null)
+            }
+
         }
     }
-    //Permisos
 
     fun BajarDoc(enlace: String) {
 
 
-        val request =  DownloadManager.Request(Uri.parse("https://revistas.uteq.edu.ec/index.php/ingenio/article/view/7/5.pdf"))
+        val request =
+//            DownloadManager.Request(Uri.parse("https://revistas.uteq.edu.ec/index.php/ingenio/article/download/7/5/15.pdf"))
+            DownloadManager.Request(Uri.parse(enlace))
             .setDescription("Download PDF")
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
             .setTitle("Download Pdf")
@@ -115,8 +108,6 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
             .setVisibleInDownloadsUi(true)
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setDestinationInExternalFilesDir(context.applicationContext, Environment.DIRECTORY_DOWNLOADS,"downloadfile.pdf")
-
-
 
         try {
             downloadid = manager.enqueue(request)
@@ -144,60 +135,4 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
         Toast.makeText(acti, Mensaje.toString(), Toast.LENGTH_LONG).show()
 
     }
-
-
-
-
-
-
-
-}
-class MyBroadcastReceiver(var downloadid: Long) : BroadcastReceiver() {
-
-    override fun onReceive(context: Context?, intent: Intent?) {
-        val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
-        if (id == downloadid)
-            Toast.makeText(context,  "Download Done!! "+downloadid.toString() ,Toast.LENGTH_LONG).show()
-    }
-}
-
-class AdministradorPermisos(var context: Context) {
-
-    fun getPermisosNoAprobados(listaPermisos: ArrayList<String?>): ArrayList<String?> {
-        val list = ArrayList<String?>()
-        for (permiso in listaPermisos) {
-            if (Build.VERSION.SDK_INT >= 23)
-                if (context.checkSelfPermission(permiso!!) != PackageManager.PERMISSION_GRANTED)
-                    list.add(permiso)
-        }
-        return list
-    }
-
-    fun getPermisosAprobados(listaPermisos: ArrayList<String?>): ArrayList<String?> {
-        val list = ArrayList<String?>()
-        for (permiso in listaPermisos) {
-            if (Build.VERSION.SDK_INT >= 23)
-                if (context.checkSelfPermission(permiso!!) == PackageManager.PERMISSION_GRANTED)
-                    list.add(permiso)
-        }
-        return list
-    }
-
-    fun getPermission(permisosSolicitados: ArrayList<String?>) {
-        if(permisosSolicitados.size>0)
-            if (Build.VERSION.SDK_INT >= 23)
-                ActivityCompat.requestPermissions(context as Activity, permisosSolicitados.toArray(arrayOfNulls(permisosSolicitados.size)),1)
-    }
-
-    fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,grantResults: IntArray):String  {
-        var s = ""
-        if (requestCode == 1) {
-            for (i in permissions.indices) {
-                s+= if(grantResults[i] == PackageManager.PERMISSION_GRANTED)"Permitido: " else "Denegado: "
-                s+=" " + permissions[i] + "\n"
-            }
-        }
-        return s
-    }
-
 }

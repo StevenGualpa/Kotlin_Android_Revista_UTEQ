@@ -13,19 +13,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 class CustomerAdapter_Volumenes constructor(context_: Context,
-                                           did: List<String>,
-                                           ddoi: List<String>,
-                                           dvolume: List<String>,
-                                           ddate: List<String>,
-                                            dportada: List<String>) : RecyclerView.Adapter<CustomerAdapter_Volumenes.ViewHolder>() {
+                                            val userList: ArrayList<Cs_Volumen>) : RecyclerView.Adapter<CustomerAdapter_Volumenes.ViewHolder>() {
     val context: Context = context_
-
-    //Creamos los list con valores por defectos para luego cambiarlos con los datos de la Api
-    val datos_id = did
-    val datos_doi = ddoi
-    val datos_volume = dvolume
-    val datos_date = ddate
-    val datos_portada=dportada
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): CustomerAdapter_Volumenes.ViewHolder {
         val v =
@@ -36,15 +25,15 @@ class CustomerAdapter_Volumenes constructor(context_: Context,
 
     override fun onBindViewHolder(viewHolder: CustomerAdapter_Volumenes.ViewHolder, i: Int) {
 
-        viewHolder.itemid.text = datos_id.get(i)
-        viewHolder.itemdoi.text=datos_doi.get(i)
-        viewHolder.itemdate.text=datos_date.get(i)
-        viewHolder.itemvolumen.text=datos_volume.get(i)
-        Picasso.get().load(datos_portada.get(i)).into(viewHolder.itemportada);
+        viewHolder.itemid.text = userList[i].id
+        viewHolder.itemdoi.text=userList[i].doi
+        viewHolder.itemdate.text=userList[i].publicacion
+        viewHolder.itemvolumen.text=userList[i].nombres
+        Picasso.get().load(userList[i].urlavatar).into(viewHolder.itemportada);
     }
 
     override fun getItemCount(): Int {
-        return datos_id.count()
+        return userList.size
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
