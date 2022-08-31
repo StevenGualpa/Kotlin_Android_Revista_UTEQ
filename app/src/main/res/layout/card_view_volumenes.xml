@@ -10,11 +10,12 @@
     app:cardElevation="6dp"
     app:contentPadding="4dp"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#836AD106"
         android:padding="16dp"
-        android:background="#6E6A6A"
         app:cardBackgroundColor="#61353131"
 
         >

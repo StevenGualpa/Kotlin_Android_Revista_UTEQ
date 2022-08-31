@@ -1,10 +1,12 @@
 package com.geek.kotlin_api_revistas
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -21,13 +23,18 @@ class activity_Volumenes : AppCompatActivity() {
         val bundle=intent.extras
         probandoVolley(bundle?.getString("dato_revista").toString())
         var num=bundle?.getString("dato_revista").toString()
-        var t:TextView = findViewById(R.id.lbl_titulo_volumenes)
-        if(num=="1"){t.text="Revista InGeni"}
-        else if(num=="2"){t.text="Ciencia y Tecnología"}
-        else if(num=="3"){t.text="Ciencias Sociales y Económicas"}
-
-
-
+        var toolbar : Toolbar?= findViewById(R.id.toolbar3);
+        if(num=="1"){
+            toolbar!!.title=("  Revista InGenio")
+            }
+        else if(num=="2"){
+            toolbar!!.title=("  Ciencia y Tecnología")
+            }
+        else if(num=="3"){
+            toolbar!!.title=("  Ciencias Sociales y Económicas")
+           }
+        toolbar?.setTitleTextColor(Color.WHITE)
+        setSupportActionBar(toolbar);
     }
 
     fun probandoVolley(parm: String) {
@@ -36,7 +43,6 @@ class activity_Volumenes : AppCompatActivity() {
         //val url: String = "https://revistas.uteq.edu.ec/ws/issues.php?j_id=1"
         val url: String = "https://revistas.uteq.edu.ec/ws/issues.php?j_id="+parm
 
-        val txtresul = findViewById<TextView>(R.id.lbl_titulo_volumenes)
         //txtresul.text=parm
         // Request a string response from the provided URL.
         val stringReq = StringRequest(

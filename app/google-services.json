@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "492625231928",
+    "project_id": "proyectorevista-f2a23",
+    "storage_bucket": "proyectorevista-f2a23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492625231928:android:6d2bb7fdd2bbd7f33566cd",
+        "android_client_info": {
+          "package_name": "com.geek.kotlin_api_revistas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492625231928-5p9onfj7skikm03fre61fufg56115q7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvN4_EeZhrJE51QSoRQ_x0Mq-0rU3wtNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492625231928-5p9onfj7skikm03fre61fufg56115q7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

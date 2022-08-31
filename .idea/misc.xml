@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Steve/Downloads/Api_Revista/Api_Revista/app/src/main/res/layout/activity_articulos.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/Steve/Downloads/Api_Revista/Api_Revista/app/src/main/res/layout/activity_main.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/Steve/Downloads/Api_Revista/Api_Revista/app/src/main/res/layout/activity_revistas.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/Steve/Downloads/Api_Revista/Api_Revista/app/src/main/res/layout/activity_volumenes.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/Steve/Downloads/Api_Revista/Api_Revista/app/src/main/res/layout/card_view_articulos.xml" value="0.31825795644891125" />
+        <entry key="..\:/Users/Steve/Downloads/Api_Revista/Api_Revista/app/src/main/res/layout/card_view_revistas.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/drawable-v24/icono_download.xml" value="0.1155" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1155" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/layout/activity_articulos.xml" value="0.20153985507246377" />
@@ -14,6 +20,7 @@
         <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/layout/card_view_articulos.xml" value="0.2" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/layout/card_view_revistas.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/layout/card_view_volumenes.xml" value="0.1" />
+        <entry key="..\:/Users/Steve/OneDrive/Documentos/GitHub/Api_Revista/app/src/main/res/layout/notificacion.xml" value="0.109375" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/Programacion/Android Studio/Kotlin/app/src/main/res/layout/activity_articulos.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/Programacion/Android Studio/Kotlin/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/Programacion/Android Studio/Kotlin/app/src/main/res/layout/activity_revistas.xml" value="0.22826086956521738" />
@@ -21,6 +28,13 @@
         <entry key="..\:/Users/Steve/OneDrive/Documentos/Programacion/Android Studio/Kotlin/app/src/main/res/layout/card_view_articulos.xml" value="0.264" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/Programacion/Android Studio/Kotlin/app/src/main/res/layout/card_view_revistas.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Steve/OneDrive/Documentos/Programacion/Android Studio/Kotlin/app/src/main/res/layout/card_view_volumenes.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/activity_articulos.xml" value="0.25" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/activity_revistas.xml" value="0.25" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/activity_volumenes.xml" value="0.25" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/card_view_articulos.xml" value="0.25" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/card_view_revistas.xml" value="0.25" />
+        <entry key="..\:/Users/luism/OneDrive/Escritorio/DIOS/PROGRAMAS/Api_Revista/app/src/main/res/layout/card_view_volumenes.xml" value="0.25" />
       </map>
     </option>
   </component>

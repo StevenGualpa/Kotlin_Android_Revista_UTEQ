@@ -1,12 +1,14 @@
 package com.geek.kotlin_api_revistas
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -16,9 +18,16 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class activity_Revistas : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_revistas)
+        var toolbar :Toolbar?= findViewById(R.id.toolbar);
+        toolbar!!?.title="REVISTAS"
+        toolbar.setTitleTextColor(Color.WHITE)
+        //toolbar?.setBackgroundResource(R.drawable.logo)
+        setSupportActionBar(toolbar);
             probandoVolley()
     }
 

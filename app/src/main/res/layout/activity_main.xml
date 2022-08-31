@@ -6,84 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageView
+        android:id="@+id/image_login"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/image_login"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a nuestro portatol mòvil de revistas cientificas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="1dp"
         android:layout_marginTop="5dp"
-        />
-
+        android:text="Bienvenido a nuestro portal mòvil de revistas cientificas"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.856" />
 
     <TextView
         android:id="@+id/sesion_txt_titulo"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginTop="32dp"
+        android:background="#00047000"
         android:text="LOGIN - UTEQ"
+        android:textColor="#047000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sesion_txt_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="248dp"
         android:hint="Usuario"
         app:helperText="Ingrese su Usuario"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sesion_txt_titulo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            />
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sesion_txt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="12dp"
-        android:hint="Password"
-        app:helperText="Ingrese su Clave"
+        android:layout_marginTop="24dp"
+        android:hint="Correo"
+        app:helperText="Ingrese su Correo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sesion_txt_usuario"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/sesion_txt_usuario">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <Button
         android:id="@+id/BtnEnviar"
@@ -91,9 +92,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
+        android:background="#047000"
+        android:backgroundTint="#047000"
         android:text="Iniciar sesión"
+        android:textColor="#FAF9F9"
+        app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sesion_txt_password" />
 

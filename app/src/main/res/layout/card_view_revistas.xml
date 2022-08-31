@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardview_revistas"
     android:layout_margin="12dp"
-    app:cardBackgroundColor="#61A3F60D"
+    app:cardBackgroundColor="#61EDEFE8"
     app:cardCornerRadius="20dp"
     app:cardElevation="6dp"
     app:contentPadding="4dp"
@@ -17,14 +17,14 @@
         >
 
         <ImageView
+            android:id="@+id/geek_item_revista_portada"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:id="@+id/geek_item_revista_portada"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"/>
+            android:layout_marginRight="16dp" />
 
         <TextView
             android:layout_width="wrap_content"

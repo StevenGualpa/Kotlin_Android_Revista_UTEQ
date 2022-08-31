@@ -1,9 +1,9 @@
 package com.geek.kotlin_api_revistas
 
-import android.app.Activity
-import android.app.DownloadManager
+import android.app.*
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
@@ -18,6 +18,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
@@ -27,7 +29,8 @@ import com.squareup.picasso.Picasso
 class CustomerAdapter_Articulos constructor(activity_: Activity,
                                             context_: Context,
                                             dmanager: DownloadManager,
-                                            var userList: ArrayList<Cs_Articulo>) : RecyclerView.Adapter<CustomerAdapter_Articulos.ViewHolder>() {
+                                            var userList: ArrayList<Cs_Articulo>,
+                                            var notification: Notification) : RecyclerView.Adapter<CustomerAdapter_Articulos.ViewHolder>() {
 
 
     val context: Context = context_
@@ -47,7 +50,7 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
 
     override fun onBindViewHolder(viewHolder: CustomerAdapter_Articulos.ViewHolder, i: Int) {
 
-        viewHolder.itemid.text = userList[i].id
+        viewHolder.itemid.text = userList[i].nombres
        // viewHolder.itemsection.text=userList[i].section
         viewHolder.itemtitle.text=userList[i].linkPD
       //  viewHolder.itemdoi.text=userList[i].doi
@@ -84,7 +87,6 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
         var itemdUrlViewGalley: TextView
         var imageView2:ImageView
         var imageView3:ImageView
-
         init {
             itemid=itemView.findViewById(R.id.geek_item_articulo_id)
            // itemsection=itemView.findViewById(R.id.geek_item_articulo_section)
@@ -96,6 +98,8 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
             //btnview=itemView.findViewById(R.id.geek_item_articulo_BtnView)
             imageView2=itemView.findViewById(R.id.imageView2)
             imageView3=itemView.findViewById(R.id.imageViewweb)
+
+
 
             //Enviar Datos
 
@@ -131,26 +135,18 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
             downloadid = manager.enqueue(request)
             context.registerReceiver(MyBroadcastReceiver(downloadid), IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
+            val NotificationManager=NotificationManagerCompat.from(context.applicationContext)
+            NotificationManager.notify(1, notification)
+
         } catch (e: Exception) {
             Toast.makeText(context.applicationContext, "Error: " + e.message, Toast.LENGTH_LONG).show()
         }
     }
-
-
-    fun solicittarPermiso()
-    {
-        if(ActivityCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(context,"Permiso Concedido", Toast.LENGTH_LONG).show()
-        }
-        else{
-            ActivityCompat.requestPermissions( acti,arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUESTED_PERMISSION_CODE)
-        }
-    }
-
 
     fun MensajeLargo(Mensaje: String)
     {
         Toast.makeText(acti, Mensaje.toString(), Toast.LENGTH_LONG).show()
 
     }
+
 }
