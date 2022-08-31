@@ -20,6 +20,14 @@ class activity_Volumenes : AppCompatActivity() {
 
         val bundle=intent.extras
         probandoVolley(bundle?.getString("dato_revista").toString())
+        var num=bundle?.getString("dato_revista").toString()
+        var t:TextView = findViewById(R.id.lbl_titulo_volumenes)
+        if(num=="1"){t.text="Revista InGeni"}
+        else if(num=="2"){t.text="Ciencia y Tecnología"}
+        else if(num=="3"){t.text="Ciencias Sociales y Económicas"}
+
+
+
     }
 
     fun probandoVolley(parm: String) {
@@ -51,7 +59,7 @@ class activity_Volumenes : AppCompatActivity() {
         val recyclerView_ : RecyclerView =findViewById(R.id.recycler_volumenes)
         val adapter_=CustomerAdapter_Volumenes(this, userList)
 
-        recyclerView_.layoutManager= LinearLayoutManager(this)
+        recyclerView_.layoutManager= LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
         recyclerView_.adapter=adapter_
 
         val resId = R.anim.layout_animation_down_to_up

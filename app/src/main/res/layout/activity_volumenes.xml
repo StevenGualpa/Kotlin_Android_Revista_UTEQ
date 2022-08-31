@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".activity_Volumenes">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:id="@+id/lyarriba"
+    android:background="#9EE848"
+    >
 
     <TextView
         android:id="@+id/lbl_titulo_volumenes"
@@ -17,9 +24,12 @@
         android:layout_marginTop="36dp"
         android:text="Aqui estan los Volumenes"
         android:textStyle="bold"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="25sp"
+        />
+
+</LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_volumenes"
@@ -31,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lbl_titulo_volumenes"
+        app:layout_constraintTop_toBottomOf="@id/lyarriba"
 
         ></androidx.recyclerview.widget.RecyclerView>
 

@@ -41,17 +41,30 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
         val v =
             LayoutInflater.from(viewGroup.context)
                 .inflate(R.layout.card_view_articulos, viewGroup, false)
+
         return ViewHolder(v)
     }
 
     override fun onBindViewHolder(viewHolder: CustomerAdapter_Articulos.ViewHolder, i: Int) {
 
         viewHolder.itemid.text = userList[i].id
-        viewHolder.itemsection.text=userList[i].section
+       // viewHolder.itemsection.text=userList[i].section
         viewHolder.itemtitle.text=userList[i].linkPD
-        viewHolder.itemdoi.text=userList[i].doi
+      //  viewHolder.itemdoi.text=userList[i].doi
         viewHolder.itempublished.text=userList[i].publicacion
         viewHolder.itemdUrlViewGalley.text=userList[i].link
+
+        Picasso.get().load(R.drawable.pdfimg).into(viewHolder.imageView2);
+        Picasso.get().load(R.drawable.navgimg).into(viewHolder.imageView3);
+
+        viewHolder.imageView3.setOnClickListener{v: View ->
+            var i= Intent(context,activity_webview::class.java)
+            i.putExtra("link", viewHolder.itemdUrlViewGalley.text)
+            ContextCompat.startActivity(context, i, null)
+        }
+        viewHolder.imageView2.setOnClickListener{v: View ->
+            BajarDoc(viewHolder.itemtitle.text.toString())
+        }
     }
 
     override fun getItemCount(): Int {
@@ -61,27 +74,32 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
     {
         var itemid: TextView
-        var itemsection: TextView
+        //var itemsection: TextView
         var itemtitle: TextView
-        var itemdoi: TextView
+        //var itemdoi: TextView
         var itempublished: TextView
-        var btndescarga: Button
-        var btnview: Button
+    //    var btndescarga: Button
+     //   var btnview: Button
 
         var itemdUrlViewGalley: TextView
-
+        var imageView2:ImageView
+        var imageView3:ImageView
 
         init {
             itemid=itemView.findViewById(R.id.geek_item_articulo_id)
-            itemsection=itemView.findViewById(R.id.geek_item_articulo_section)
+           // itemsection=itemView.findViewById(R.id.geek_item_articulo_section)
             itemtitle=itemView.findViewById(R.id.geek_item_articulo_title)
-            itemdoi=itemView.findViewById(R.id.geek_item_articulo_doi)
+            //itemdoi=itemView.findViewById(R.id.geek_item_articulo_doi)
             itempublished=itemView.findViewById(R.id.geek_item_articulo_date_published)
-            itemdUrlViewGalley=itemView.findViewById(R.id.geek_item_articulo_link)
-            btndescarga=itemView.findViewById(R.id.geek_item_articulo_BtnDescarga)
-            btnview=itemView.findViewById(R.id.geek_item_articulo_BtnView)
+           itemdUrlViewGalley=itemView.findViewById(R.id.geek_item_articulo_link)
+            //btndescarga=itemView.findViewById(R.id.geek_item_articulo_BtnDescarga)
+            //btnview=itemView.findViewById(R.id.geek_item_articulo_BtnView)
+            imageView2=itemView.findViewById(R.id.imageView2)
+            imageView3=itemView.findViewById(R.id.imageViewweb)
+
             //Enviar Datos
 
+/*
             btndescarga.setOnClickListener{ v: View ->
 
                 BajarDoc(itemtitle.text.toString())
@@ -91,7 +109,7 @@ class CustomerAdapter_Articulos constructor(activity_: Activity,
                 i.putExtra("link", itemdUrlViewGalley.text)
                 ContextCompat.startActivity(context, i, null)
             }
-
+ */
         }
     }
 

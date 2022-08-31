@@ -26,8 +26,8 @@ class CustomerAdapter_Volumenes constructor(context_: Context,
     override fun onBindViewHolder(viewHolder: CustomerAdapter_Volumenes.ViewHolder, i: Int) {
 
         viewHolder.itemid.text = userList[i].id
-        viewHolder.itemdoi.text=userList[i].doi
-        viewHolder.itemdate.text=userList[i].publicacion
+        viewHolder.itemdoi.text="Doi: "+userList[i].doi
+        viewHolder.itemdate.text="Publicado: "+userList[i].publicacion
         viewHolder.itemvolumen.text=userList[i].nombres
         Picasso.get().load(userList[i].urlavatar).into(viewHolder.itemportada);
     }
@@ -53,9 +53,9 @@ class CustomerAdapter_Volumenes constructor(context_: Context,
             //Enviar Datos
             itemView.setOnClickListener{ v: View ->
                 var position: Int = getAdapterPosition()
- //               Snackbar.make(v, "Item Selecccionado $position    ${itemid.text}" ,  Snackbar.LENGTH_LONG).setAction("Actción", null).show()
+              Snackbar.make(v, "Item Selecccionado $position    ${itemvolumen.text.toString()}" ,  Snackbar.LENGTH_LONG).setAction("Actción", null).show()
                 var i= Intent(context,activity_articulos::class.java)
-                i.putExtra("dato_volumen", itemid.text)
+                i.putExtra("dato_volumen", itemid.text).putExtra("name",itemvolumen.text)
                 ContextCompat.startActivity(context, i, null)
             }
         }

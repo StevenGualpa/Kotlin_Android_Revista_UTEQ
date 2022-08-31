@@ -27,7 +27,7 @@ class activity_Revistas : AppCompatActivity() {
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(this)
         val url: String = "https://revistas.uteq.edu.ec/ws/journals.php"
-        val txtresul = findViewById<TextView>(R.id.lbl_titulo_revistas)
+        //val txtresul = findViewById<TextView>(R.id.lbl_titulo_revistas)
         // Request a string response from the provided URL.
         val stringReq = StringRequest(
             Request.Method.GET, url,

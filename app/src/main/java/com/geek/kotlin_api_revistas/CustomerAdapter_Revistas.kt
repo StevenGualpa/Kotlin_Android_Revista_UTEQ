@@ -61,6 +61,7 @@ class CustomerAdapter_Revistas constructor(context_: Context,
                 //Snackbar.make(v, "Item Selecccionado $position    ${itemid.text}" , Snackbar.LENGTH_LONG).setAction("Actción", null).show()
                 var i=Intent(context,activity_Volumenes::class.java)
                 i.putExtra("dato_revista", itemid.text)
+                i.putExtra("revista",itemname.text)
                     startActivity(context,i, null)
             }
         }
